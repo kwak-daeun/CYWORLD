@@ -15,6 +15,9 @@
 		<level value="info" />
 	</logger>
 	
+	<!-- 여기서부터 log 추가하기 -->
+	<!-- ex) diary, album 등등 -->
+	
 	<!-- 3rdparty Loggers -->
 	<logger name="org.springframework.core">
 		<level value="info" />
