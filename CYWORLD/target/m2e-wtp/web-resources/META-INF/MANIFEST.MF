@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Built-By: inosys 2-5
-Build-Jdk: 11.0.18
+Built-By: inosys 2-6
+Build-Jdk: 11.0.2
 Created-By: Maven Integration for Eclipse
 
