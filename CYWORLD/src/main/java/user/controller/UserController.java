@@ -1,4 +1,4 @@
-package user;
+package user.controller;
 
 public class UserController {
 
