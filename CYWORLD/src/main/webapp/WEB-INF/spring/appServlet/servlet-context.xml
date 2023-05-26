@@ -74,5 +74,5 @@
 	
 	<!-- 추후 추가 : 각 contoller, service -->
 	<!-- ex) diary.controller, diary.service 등 -->
-	<context:component-scan base-package="a.b.c" />
+	<context:component-scan base-package="a.b.c, album.controller, book.controller, diary.controller, reply.controller, user.controller" />
 </beans:beans>
