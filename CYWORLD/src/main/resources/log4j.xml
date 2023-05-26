@@ -15,8 +15,25 @@
 		<level value="info" />
 	</logger>
 	
-	<!-- 여기서부터 log 추가하기 -->
-	<!-- ex) diary, album 등등 -->
+	<logger name="album">
+		<level value="info" />
+	</logger>
+	
+	<logger name="book">
+		<level value="info" />
+	</logger>
+	
+	<logger name="diary">
+		<level value="info" />
+	</logger>
+	
+	<logger name="reply">
+		<level value="info" />
+	</logger>
+	
+	<logger name="user">
+		<level value="info" />
+	</logger>
 	
 	<!-- 3rdparty Loggers -->
 	<logger name="org.springframework.core">

@@ -23,16 +23,18 @@
 			<array>
 				<!-- ** : 모든 폴더 구조 -->
 				<!-- * : 모든 단어 -->
-				<value>classpath:/board/dao/**/*Mapper.xml</value>
-				<value>classpath:/member/dao/**/*Mapper.xml</value>
-				<value>classpath:/admin/dao/**/*Mapper.xml</value>
+				<value>classpath:/album/dao/**/*Mapper.xml</value>
+				<value>classpath:/book/dao/**/*Mapper.xml</value>
+				<value>classpath:/diary/dao/**/*Mapper.xml</value>
+				<value>classpath:/reply/dao/**/*Mapper.xml</value>
+				<value>classpath:/user/dao/**/*Mapper.xml</value>
 			</array>
 		</property>
 	</bean>
 	<!-- 마이바티스를 이용하는 인터페이스 설정(DAO 설정) -->
 	<!-- -> Mapper XML의 namespace 속성과 일치하는 인터페이스를 찾음 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="board.dao, member.dao, admin.dao" />
+		<property name="basePackage" value="album.dao, book.dao, diary.dao, reply.dao, user.dao" />
 	</bean>
 	<!-- 트랜잭션 매니저 스프링 빈 설정 -->
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">

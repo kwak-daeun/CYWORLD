@@ -11,8 +11,10 @@
 	
 	<!-- 마이바티스 패키지 이름 적기 -->
 	<typeAliases>
-		<package name="board.dto" />
-		<package name="member.dto" />
-		<package name="admin.dto" />
+		<package name="album.dto" />
+		<package name="book.dto" />
+		<package name="diary.dto" />
+		<package name="reply.dto" />
+		<package name="user.dto" />
 	</typeAliases>
 </configuration>
