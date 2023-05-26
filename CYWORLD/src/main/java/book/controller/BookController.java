@@ -1,4 +1,4 @@
-package book;
+package book.controller;
 
 public class BookController {
 
