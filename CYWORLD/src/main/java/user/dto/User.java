@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class User {
 
+	private int memberNo;			// 회원 번호
 	private String memberId;		// 회원 아이디
 	private String memberPw;		// 회원 비밀번호
 	private Date memberDate;		// 회원 가입일
@@ -12,22 +13,32 @@ public class User {
 	private Date memberBirth;		// 회원 생년월일
 	
 	public User() {}
-
+	
 	@Override
 	public String toString() {
-		return "User [memberId=" + memberId + ", memberPw=" + memberPw + ", memberDate=" + memberDate + ", memberName="
-				+ memberName + ", memberPhone=" + memberPhone + ", memberBirth=" + memberBirth + "]";
+		return "User [memberNo=" + memberNo + ", memberId=" + memberId + ", memberPw=" + memberPw + ", memberDate="
+				+ memberDate + ", memberName=" + memberName + ", memberPhone=" + memberPhone + ", memberBirth="
+				+ memberBirth + "]";
 	}
-	
-	public User(String memberId, String memberPw, Date memberDate, String memberName, String memberPhone,
+
+	public User(int memberNo, String memberId, String memberPw, Date memberDate, String memberName, String memberPhone,
 			Date memberBirth) {
 		super();
+		this.memberNo = memberNo;
 		this.memberId = memberId;
 		this.memberPw = memberPw;
 		this.memberDate = memberDate;
 		this.memberName = memberName;
 		this.memberPhone = memberPhone;
 		this.memberBirth = memberBirth;
+	}
+
+	public int getMemberNo() {
+		return memberNo;
+	}
+
+	public void setMemberNo(int memberNo) {
+		this.memberNo = memberNo;
 	}
 
 	public String getMemberId() {
