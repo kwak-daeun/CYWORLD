@@ -8,16 +8,19 @@
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
 		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />
-		<property name="username" value="scott" />
-		<property name="password" value="tiger" />
+		<property name="username" value="ORACLE" />
+		<property name="password" value="1234" />
 	</bean>
 	
 	<!-- 마이바티스 수행 객체 설정(SqlSession) -->
 	<bean id="SqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+	
 		<!-- dataSource 스프링 빈으로 설정한 DB 정보 입력하기 -->
 		<property name="dataSource" ref="dataSource" />
+		
 		<!-- 마이바티스 설정파일(XML)의 위치 지정하기 -->
 		<property name="configLocation" value="classpath:/mybatis-config.xml" />
+		
 		<!-- Mapper XML 파일의 위치 설정하기 -->
 		<property name="mapperLocations">
 			<array>
@@ -31,11 +34,13 @@
 			</array>
 		</property>
 	</bean>
+	
 	<!-- 마이바티스를 이용하는 인터페이스 설정(DAO 설정) -->
 	<!-- -> Mapper XML의 namespace 속성과 일치하는 인터페이스를 찾음 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="album.dao, book.dao, diary.dao, reply.dao, user.dao" />
 	</bean>
+	
 	<!-- 트랜잭션 매니저 스프링 빈 설정 -->
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource" />
