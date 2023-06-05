@@ -19,7 +19,7 @@ public class UserController {
 	@Autowired private UserService userService;
 	
 	// 테스트
-	@RequestMapping("/user")
+	@RequestMapping("/login")
 	public void main() {
 		logger.info("USER 확인");
 	}
