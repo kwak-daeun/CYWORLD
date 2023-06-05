@@ -1,0 +1,58 @@
+@charset "UTF-8";
+* {
+    box-sizing: border-box;
+}
+* {
+    padding: 0;
+    margin: 0;
+}
+
+  .main-container{
+  	margin:0px auto;
+    display:flex;
+    justify-content: center;
+
+	
+}  
+
+h2 {
+ 
+	
+}
+
+.logo-img{
+	width:100%;
+	height:100%;
+	float: left;
+	margin:100px;
+	padding: 40px;
+	
+}
+.right-box{
+	float: right;
+	margin-right: 120px;
+    margin-top: 200px;
+    
+}
+
+button{
+	cursor: pointer;
+}	
+
+.user-id{
+	border-radius: 0.5em;
+	border: none;
+}
+
+.user-pwd{
+	border-radius: 0.5em;
+	border: none;
+}
+.login-input{
+	width: 250px;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    height: 30px;
+    border-radius: 0.5em;
+    border: none;
+}
