@@ -26,8 +26,13 @@
 		<selectKey resultType="int" keyProperty="albumNo" order="BEFORE">
 			SELECT album_seq.nextval FROM dual
 		</selectKey>
-		INSERT INTO album ( album_no, album_title, album_content, album_date, album_origin_name, album_store_name )
-		VALUES ( #{ albumNo }, #{ albumTitle }, #{ albumContent }, sysdate, #{ albumOriginName }, #{ albumStoreName } )
+		INSERT INTO album ( album_no, album_title, album_content, album_date )
+		VALUES ( #{ albumNo }, #{ albumTitle }, #{ albumContent }, sysdate )
+	</insert>
+	
+	<insert id="albumFileWrite" parameterType="album.dto.AlbumFile">
+		INSERT INTO album_file ( album_file_no, album_no, album_origin_name, album_stored_name )
+		VALUES ( album_file_seq.nextval, #{ albumNo }, #{ albumOriginName }, #{ albumStoredName } )
 	</insert>
 	
 	<!-- - - - - - - - - - - UPDATE - - - - - - - - - - -->

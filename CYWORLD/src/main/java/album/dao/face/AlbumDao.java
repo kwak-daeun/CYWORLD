@@ -3,6 +3,7 @@ package album.dao.face;
 import java.util.List;
 
 import album.dto.Album;
+import album.dto.AlbumFile;
 
 public interface AlbumDao {
 
@@ -25,5 +26,5 @@ public interface AlbumDao {
 	 * 
 	 * @param albumFile
 	 */
-	public void albumFile(Album albumFile);
+	public void albumFileWrite(AlbumFile albumFile);
 }

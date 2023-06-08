@@ -139,6 +139,9 @@ textarea {
 				<span><input type="text" id="" name="" class="" style="width: 400px;"></span>
 				<span><input type="button" value="등록" style="float: right;"></span>
 		</div>
+		<div>
+		
+		</div>
 		<hr style="margin-top: 50px; margin-bottom: 50px;">
 	</c:forEach>
 </div>
