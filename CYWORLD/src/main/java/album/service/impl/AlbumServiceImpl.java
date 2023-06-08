@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import album.dao.face.AlbumDao;
 import album.dto.Album;
+import album.dto.AlbumFile;
 import album.service.face.AlbumService;
 
 @Service
@@ -57,11 +58,11 @@ public class AlbumServiceImpl implements AlbumService {
 		}
 
 		// 파일이 저장될 이름
-		String originName = file.getOriginalFilename();
-		String storedName = originName + UUID.randomUUID().toString().split("-")[4];
+		String albumOriginName = file.getOriginalFilename();
+		String albumStoredName = albumOriginName + UUID.randomUUID().toString().split("-")[4];
 
 		// 저장할 파일의 정보 객체
-		File dest = new File( storedFolder, storedName );
+		File dest = new File( storedFolder, albumStoredName );
 
 		try {
 			file.transferTo(dest);
@@ -74,11 +75,11 @@ public class AlbumServiceImpl implements AlbumService {
 		//--------------------------------------------
 
 		// 첨부파일 정보 DB 기록
-		Album albumFile = new Album();
+		AlbumFile albumFile = new AlbumFile();
 		albumFile.setAlbumNo( album.getAlbumNo() );
-		albumFile.setAlbumOriginName(originName);
-		albumFile.setAlbumStoreName(storedName);
+		albumFile.setAlbumOriginName(albumOriginName);
+		albumFile.setAlbumStoredName(albumStoredName);
 
-		albumDao.albumFile(albumFile);
+		albumDao.albumFileWrite(albumFile);
 	}
 }

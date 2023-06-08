@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import album.dto.Album;
+import album.dto.AlbumFile;
 import album.service.face.AlbumService;
 
 @Controller
@@ -36,7 +37,7 @@ public class AlbumController {
 	
 	// 사진첩 메인
 	@RequestMapping("/albumList")
-	public void albumList(Model model) {
+	public void albumList(Album viewAlbum, Model model) {
 		logger.info("AlbumController albumList 확인");
 		
 		List<Album> albumList = albumService.albumList();
@@ -46,6 +47,10 @@ public class AlbumController {
 		logger.info("albumList : {}", a);
 		
 		model.addAttribute("albumList", albumList);
+		
+		//첨부파일 모델값 전달
+//		AlbumFile albumFile = albumService.getAttachFile(viewAlbum);
+//		model.addAttribute("viewAlbumFile", viewAlbum);
 	}
 	
 	// 사진첩 조회
@@ -62,27 +67,16 @@ public class AlbumController {
 	
 	// 사진첩 작성 POST
 	@PostMapping("/albumWrite")
-	@ResponseBody
-	public Map<String, Object> albumWritePOST(Album album, MultipartFile file) {
-		Map<String, Object> map = new HashMap<String, Object>();
-		try {
-			// 서비스 객체 연결, 게시판 작성
-			albumService.albumWrite(album, file);
+	public String albumWritePOST(Album album, MultipartFile file) {
+		logger.info("AlbumController Write POST 확인");
+		
+		// 서비스 객체 연결, 게시판 작성
+		albumService.albumWrite(album, file);
+		
+		logger.info("albumWrite album : {}", album);
+		logger.info("albumWrite file : {}", file);
 			
-			map.put("albumTitle", album.getAlbumTitle());
-			map.put("albumContent", album.getAlbumContent());
-			map.put("map", true);
-			
-		} catch(Exception e) {
-			
-			String str = String.valueOf(e.getCause());
-			
-			map.put("message", str);
-			map.put("map", false);
-			
-			return map;
-		}
-		return map;
+		return "redirect:/album/albumList";
 	}
 	
 	// 사진첩 수정

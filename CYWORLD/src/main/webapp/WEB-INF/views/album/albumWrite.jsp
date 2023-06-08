@@ -17,6 +17,7 @@ $(document).ready(function() {
 	// 돌아가기
 	$("#btnCancel").click(function() {
 		console.log("btnCancel Click")
+		location.href = "/album/albumList";
 	})
 	
 	// 작성
@@ -36,39 +37,46 @@ $(document).ready(function() {
 		
 		var wri = confirm("글을 등록하겠습니까?")
 		if(wri == true) {
-			$.ajax({
-				url: "/album/albumWrite"
-				, type: "post"
-				, async: false
-				, data: {
-					albumTitle: $("#albumTitle").val()
-					, albumContent : $("#albumContent").val()
-				}
-				, dataType: "json"
-				, success: function(data) {
-					if(data.map == false) {
-						alert(data.message)
-						return false;
-					} else {
-						var con = confirm("메인으로 돌아가시겠습니까?")
-						if(con == true) {
-							alert("메인페이지 이동")
-							location.href = "/album/albumList"
-						} else if(con == false) {
-							alert("조회페이지 이동")
-							location.href = "/album/detail?boardNo=${ detailBoard.boardNo }"
-						}
-					}
-				}
-				, error: function() {
-					alert("에러 발생")
-				}
-			})
+			alert("작성 완료")
+			location.href = "/album/albumList"
 		} else if(wri == false) {
 			return false;
 		}
 	})
 })
+
+function readURL(input) {
+	/* if(input.files && input.files[0]) {
+		var reader = new FileReader();
+		reader.onload = function(e) {
+			document.getElementById('preview').src = e.target.result;
+		};
+		reader.readAsDataURL(input.files[0]);
+	} else {
+		document.getElementById('preview').src = "";
+	} */
+
+	var file = input.files;
+	
+	if(!/\.(gif|jpg|jpeg|png)$/i.test(file[0].name)){
+		alert('gif, jpg, png 파일만 선택해 주세요.\n\n현재 파일 : ' + file[0].name);
+	
+		input.outerHTML = input.outerHTML;
+
+		document.getElementById('preview').innerHTML = '';
+
+	} else {
+
+		var reader = new FileReader();
+
+		reader.onload = function(rst){
+			document.getElementById('preview').src = rst.target.result;
+		}
+	
+		reader.readAsDataURL(input.files[0]);
+
+	}
+}
 
 </script>
 
@@ -106,6 +114,22 @@ textarea {
 	margin-top: 50px;
 }
 
+.albumTitle {
+	float: left;
+	padding: 0;
+	margin: 0;
+}
+
+.albumFile {
+	float: left;
+	padding: 0;
+	margin: 0;
+}
+
+#preview {
+	float: left;
+}
+
 </style>
 
 </head>
@@ -130,14 +154,19 @@ textarea {
 			<tr>
 				<th>내용</th>
 				<td>
-					<textarea rows="10" style="width: 500px;" id="albumContent" name="albumContent" class="albumContent"></textarea>
+					<div>
+						<img id="preview" name="" class="">
+					</div>
+					<div>
+						<textarea rows="1" style="width: 500px;" id="albumContent" name="albumContent" class="albumContent"></textarea>
+					</div>
 				</td>
 			</tr>
 			
 			<tr>
 				<th>첨부파일</th>
 				<td>
-					<input type="file" id="file" name="file" class="albumFile">
+					<input type="file" id="file" name="file" class="albumFile" onchange="readURL(this);">
 				</td>
 			</tr>
 		</table>
