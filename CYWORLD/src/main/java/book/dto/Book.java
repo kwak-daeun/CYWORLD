@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Book {
 	
-	private int bookNum;		// 방명록 번호
+	private int bookNo;		// 방명록 번호
 	private Date bookDate;		// 방명록 작성일자
 	private String bookContent;	// 방명록 내용
 	private String bookSecret;	// 방명록 비밀글
@@ -13,24 +13,24 @@ public class Book {
 
 	@Override
 	public String toString() {
-		return "Book [bookNum=" + bookNum + ", bookDate=" + bookDate + ", bookContent=" + bookContent + ", bookSecret="
+		return "Book [bookNo=" + bookNo + ", bookDate=" + bookDate + ", bookContent=" + bookContent + ", bookSecret="
 				+ bookSecret + "]";
 	}
 
-	public Book(int bookNum, Date bookDate, String bookContent, String bookSecret) {
+	public Book(int bookNo, Date bookDate, String bookContent, String bookSecret) {
 		super();
-		this.bookNum = bookNum;
+		this.bookNo = bookNo;
 		this.bookDate = bookDate;
 		this.bookContent = bookContent;
 		this.bookSecret = bookSecret;
 	}
 
-	public int getBookNum() {
-		return bookNum;
+	public int getBookNo() {
+		return bookNo;
 	}
 
-	public void setBookNum(int bookNum) {
-		this.bookNum = bookNum;
+	public void setBookNo(int bookNo) {
+		this.bookNo = bookNo;
 	}
 
 	public Date getBookDate() {

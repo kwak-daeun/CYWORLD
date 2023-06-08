@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Reply {
 
-	private int replyNum;		// 댓글 번호
+	private int replyNo;		// 댓글 번호
 	private String replyCom;	// 댓글 내용
 	private Date replyDate;		// 댓글 일자
 	
@@ -12,22 +12,22 @@ public class Reply {
 
 	@Override
 	public String toString() {
-		return "Reply [replyNum=" + replyNum + ", replyCom=" + replyCom + ", replyDate=" + replyDate + "]";
+		return "Reply [replyNo=" + replyNo + ", replyCom=" + replyCom + ", replyDate=" + replyDate + "]";
 	}
 	
-	public Reply(int replyNum, String replyCom, Date replyDate) {
+	public Reply(int replyNo, String replyCom, Date replyDate) {
 		super();
-		this.replyNum = replyNum;
+		this.replyNo = replyNo;
 		this.replyCom = replyCom;
 		this.replyDate = replyDate;
 	}
 
-	public int getReplyNum() {
-		return replyNum;
+	public int getReplyNo() {
+		return replyNo;
 	}
 
-	public void setReplyNum(int replyNum) {
-		this.replyNum = replyNum;
+	public void setReplyNo(int replyNo) {
+		this.replyNo = replyNo;
 	}
 
 	public String getReplyCom() {

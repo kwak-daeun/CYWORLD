@@ -1,14 +1,12 @@
 package album.dto;
 
-import java.util.Date;
-
 public class Album {
 
-	private int albumNum;			// 사진첩 번호
+	private int albumNo;			// 사진첩 번호
 	private String albumTitle;		// 사진첩 제목
 	private String albumContent;	// 사진첩 내용
 	private String albumByte;		// 사진첩 크기
-	private Date albumDate;			// 사진첩 저장 일자
+	private String albumDate;		// 사진첩 저장 일자
 	private String albumOriginName;	// 사진첩 원본 이름
 	private String albumStoreName;	// 사진첩 저장 이름
 	
@@ -16,15 +14,15 @@ public class Album {
 
 	@Override
 	public String toString() {
-		return "Album [albumNum=" + albumNum + ", albumTitle=" + albumTitle + ", albumContent=" + albumContent
+		return "Album [albumNo=" + albumNo + ", albumTitle=" + albumTitle + ", albumContent=" + albumContent
 				+ ", albumByte=" + albumByte + ", albumDate=" + albumDate + ", albumOriginName=" + albumOriginName
 				+ ", albumStoreName=" + albumStoreName + "]";
 	}
 
-	public Album(int albumNum, String albumTitle, String albumContent, String albumByte, Date albumDate,
+	public Album(int albumNo, String albumTitle, String albumContent, String albumByte, String albumDate,
 			String albumOriginName, String albumStoreName) {
 		super();
-		this.albumNum = albumNum;
+		this.albumNo = albumNo;
 		this.albumTitle = albumTitle;
 		this.albumContent = albumContent;
 		this.albumByte = albumByte;
@@ -33,12 +31,12 @@ public class Album {
 		this.albumStoreName = albumStoreName;
 	}
 
-	public int getAlbumNum() {
-		return albumNum;
+	public int getAlbumNo() {
+		return albumNo;
 	}
 
-	public void setAlbumNum(int albumNum) {
-		this.albumNum = albumNum;
+	public void setAlbumNo(int albumNo) {
+		this.albumNo = albumNo;
 	}
 
 	public String getAlbumTitle() {
@@ -65,11 +63,11 @@ public class Album {
 		this.albumByte = albumByte;
 	}
 
-	public Date getAlbumDate() {
+	public String getAlbumDate() {
 		return albumDate;
 	}
 
-	public void setAlbumDate(Date albumDate) {
+	public void setAlbumDate(String albumDate) {
 		this.albumDate = albumDate;
 	}
 
