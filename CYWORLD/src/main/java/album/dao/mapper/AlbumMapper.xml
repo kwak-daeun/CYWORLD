@@ -6,9 +6,29 @@
 
 	<!-- - - - - - - - - - - SELECT - - - - - - - - - - -->
 	
+	<!-- - - - - - - - - - - 사진첩 조회 - - - - - - - - - - -->
+	<select id="albumList" resultType="album.dto.Album">
+		SELECT album_no, album_title, album_content, to_char(album_date, 'yyyy-MM-dd day hh24:mi:ss') AS album_date
+		FROM album
+		ORDER BY album_no DESC
+	</select>
+	
+	<select id="albumFile" resultType="album.dto.Album" parameterType="album.dto.Album">
+		SELECT album_no, album_origin_name, album_store_name
+		FROM album
+		WHERE album_no = #{ albumNo }
+	</select>
 	
 	<!-- - - - - - - - - - - INSERT - - - - - - - - - - -->
 	
+	<!-- - - - - - - - - - - 사진첩 작성 - - - - - - - - - - -->
+	<insert id="albumWrite" parameterType="album.dto.Album">
+		<selectKey resultType="int" keyProperty="albumNo" order="BEFORE">
+			SELECT album_seq.nextval FROM dual
+		</selectKey>
+		INSERT INTO album ( album_no, album_title, album_content, album_date, album_origin_name, album_store_name )
+		VALUES ( #{ albumNo }, #{ albumTitle }, #{ albumContent }, sysdate, #{ albumOriginName }, #{ albumStoreName } )
+	</insert>
 	
 	<!-- - - - - - - - - - - UPDATE - - - - - - - - - - -->
 	

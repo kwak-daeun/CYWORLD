@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Diary {
 
-	private int diaryNum;			// 게시글 번호
+	private int diaryNo;			// 게시글 번호
 	private String memberId;		// 회원 아이디(FK)
 	private String diaryCategory;	// 게시글 카테고리
 	private String diaryTitle;		// 게시글 제목
@@ -17,15 +17,15 @@ public class Diary {
 
 	@Override
 	public String toString() {
-		return "Diary [diaryNum=" + diaryNum + ", memberId=" + memberId + ", diaryCategory=" + diaryCategory
+		return "Diary [diaryNo=" + diaryNo + ", memberId=" + memberId + ", diaryCategory=" + diaryCategory
 				+ ", diaryTitle=" + diaryTitle + ", diaryContent=" + diaryContent + ", diaryDate=" + diaryDate
 				+ ", diaryLike=" + diaryLike + ", diarySecret=" + diarySecret + "]";
 	}
 
-	public Diary(int diaryNum, String memberId, String diaryCategory, String diaryTitle, String diaryContent,
+	public Diary(int diaryNo, String memberId, String diaryCategory, String diaryTitle, String diaryContent,
 			Date diaryDate, String diaryLike, String diarySecret) {
 		super();
-		this.diaryNum = diaryNum;
+		this.diaryNo = diaryNo;
 		this.memberId = memberId;
 		this.diaryCategory = diaryCategory;
 		this.diaryTitle = diaryTitle;
@@ -35,12 +35,12 @@ public class Diary {
 		this.diarySecret = diarySecret;
 	}
 
-	public int getDiaryNum() {
-		return diaryNum;
+	public int getDiaryNo() {
+		return diaryNo;
 	}
 
-	public void setDiaryNum(int diaryNum) {
-		this.diaryNum = diaryNum;
+	public void setDiaryNo(int diaryNo) {
+		this.diaryNo = diaryNo;
 	}
 
 	public String getMemberId() {
