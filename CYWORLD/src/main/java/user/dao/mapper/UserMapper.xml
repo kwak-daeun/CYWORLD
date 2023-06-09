@@ -4,4 +4,16 @@
 
 <mapper namespace="user.dao.face.UserDao">
 
+<!-- resulttype parmetertype 구분 -->
+
+ <insert id="insert" parameterType="user.dto.User">
+		INSERT INTO MEMBER(MEMBER_NO, MEMBER_NAME, MEMBER_ID, MEMBER_PW)
+		VALUES(member_seq.nextval, #{memberName}, #{memberId}, #{memberPw})
+</insert> 
+
+ <select id="selectIdCheck" parameterType="user.dto.User" resultType="int">
+ 	select count (*) from MEMBER
+ 	WHERE MEMBER_ID = #{memberId}
+</select> 
+
 </mapper>
