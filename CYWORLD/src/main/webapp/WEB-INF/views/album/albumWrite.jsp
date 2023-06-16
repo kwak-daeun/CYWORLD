@@ -23,7 +23,7 @@ $(document).ready(function() {
 	// 작성
 	$("#btnWrite").click(function() {
 		console.log("btnWrite Click")
-		let albumFroM = document.albumFroM;
+		let writeForm = document.writeForm;
 		let album_title = document.getElementById('albumTitle').value;
 		let album_content = document.getElementById('albumContent').value;
 
@@ -58,23 +58,20 @@ function readURL(input) {
 
 	var file = input.files;
 	
-	if(!/\.(gif|jpg|jpeg|png)$/i.test(file[0].name)){
+	if( !/\.(gif|jpg|jpeg|png)$/i.test(file[0].name) ) {
 		alert('gif, jpg, png 파일만 선택해 주세요.\n\n현재 파일 : ' + file[0].name);
 	
 		input.outerHTML = input.outerHTML;
 
 		document.getElementById('preview').innerHTML = '';
-
 	} else {
-
 		var reader = new FileReader();
 
-		reader.onload = function(rst){
+		reader.onload = function(rst) {
 			document.getElementById('preview').src = rst.target.result;
 		}
 	
 		reader.readAsDataURL(input.files[0]);
-
 	}
 }
 
@@ -142,7 +139,7 @@ textarea {
 <hr style="margin-bottom: 50px;">
 
 <div class="list">
-	<form action="/album/albumWrite" method="post" id="albumForm" name="albumForm" enctype="multipart/form-data">
+	<form action="/album/albumWrite" method="post" id="writeForm" name="writeForm" enctype="multipart/form-data">
 		<table>
 			<tr>
 				<th>제목</th>

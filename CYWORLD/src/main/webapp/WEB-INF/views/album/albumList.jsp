@@ -13,24 +13,83 @@
 <script type="text/javascript">
 
 $(document).ready(function() {
+	// allCheck 버튼 클릭
+	$("#allCheck").click(function() {
+		if( $("#allCheck").is(':checked') ) {
+			$("input[name=rowCheck]").prop("checked", true);
+		} else {
+			$("input[name=rowCheck]").prop("checked", false);
+		}
+	})
+	
+	// rowCheck 버튼 클릭
+	$("input[name=rowCheck]").click(function() {
+		var allChecked = $("input[name=rowCheck]").length;
+		var rowChecked = $("input[name=rowCheck]:checked").length;
+		
+		if( allChecked != rowChecked ) {
+			$("#allCheck").prop("checked", false);
+		} else {
+			$("#allCheck").prop("checked", true);
+		}
+	})
+
+	// 선택한 rowCheck의 albumNo 값을 console로 출력
+	$("input[name='rowCheck']:checked").each(function() {
+		var checkVal = $(this).val();
+	})
+	
 	// 작성
 	$("#btnWrite").click(function() {
 		console.log("btnWrite Click")
 		location.href = "./albumWrite";
 	})
-	
-	// 삭제
-	$("#btnDelete").click(function() {
-		console.log("btnDelete Click")
-		location.href = "./albumDelete";
-	})
-	
+
 	// 돌아가기
 	$("#btnCancel").click(function() {
 		console.log("btnCancel Click")
 		location.href = "/book/book";
 	})
 })
+
+// 선택 삭제
+function deleteValue() {
+	var checkAlbum = [];
+	var list = $("input[name='rowCheck']");
+	
+	for(var i = 0; i < list.length; i++) {
+		if(list[i].checked) {
+			checkAlbum.push(list[i].value);
+		}
+	}
+	
+	if(checkAlbum.length == 0) {
+		alert("선택된 글이 없습니다.")
+	} else {
+		var chk = confirm("삭제하시겠습니까?")
+		
+		if(chk == true) {
+			$.ajax({
+				url: "/album/albumCheckDelete"
+				, type: "get"
+				, traditional: true
+				, data: {
+					checkAlbum : checkAlbum
+				}
+				, success: function(data) {
+					alert(checkAlbum.length + "개 삭제 성공")
+					location.href = "/album/albumList"
+				}
+				, error: function() {
+					alert("삭제 실패")
+				}
+			})
+		} else if(chk == false) {
+			alert("취소 버튼 클릭")
+			return false;
+		}
+	}
+}
 
 </script>
 
@@ -74,6 +133,11 @@ textarea {
 .btn {
 	text-align: center;
 	margin-top: 50px;
+}
+
+#btnUpdate {
+	float: right;
+	font-size: 15px;
 }
 
 </style>
@@ -120,7 +184,7 @@ textarea {
 	<c:forEach items="${ albumList }" var="album">
 		<div style="background: #E0E3DA">
 			<div>
-				<input type="checkbox" style="float: left;">
+				<input type="checkbox" style="float: left;" id="rowCheck" name="rowCheck" value="${ album.albumNo }">
 				<label style="background: #E0E3DA; font-size: 15px;">${ album.albumTitle }</label>
 			</div>
 		</div>
@@ -128,6 +192,7 @@ textarea {
 			<div>
 				<label style="float: left; font-size: 15px;">NO...${ album.albumNo }</label>
 				<label style="font-size: 15px;">${ album.albumDate }</label>
+				<a href="/album/albumDetail?albumNo=${ album.albumNo }" id="btnUpdate">수정</a>
 			</div>
 		</div>
 		<div style="margin-bottom: 20px; margin-top: 20px; font-size: 20px;">
@@ -148,7 +213,7 @@ textarea {
 
 <div class="btn">
 	<button type="button" id="btnWrite">작성</button>
-	<button type="button" id="btnDelete">삭제</button>
+	<button type="button" id="btnDelete" onclick="deleteValue();">삭제</button>
 	<button type="button" id="btnCancel">돌아가기</button>
 </div>
 
