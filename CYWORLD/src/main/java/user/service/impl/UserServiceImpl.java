@@ -40,4 +40,24 @@ public class UserServiceImpl implements UserService {
 		}
 		return false;	
 	}
+
+	@Override
+	public boolean login(User user) {
+	
+		int loginChk = userDao.selectCount(user);
+		
+		if(loginChk > 0)
+		return true;
+		return false;
+	}
+
+	@Override
+	public User getLoginInfo(User user) {
+		
+		user = userDao.seletLoginInfo(user);
+		
+		return user;
+	}
+	
+	
 }

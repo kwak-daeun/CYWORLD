@@ -42,7 +42,7 @@
     height: 40px;
 
     border: none;
- q 	
+ 
     color: white;
     background-color: orange;
 }
@@ -53,4 +53,8 @@ a {
     text-align: center;
     text-decoration: none;
     color: rgb(198, 198, 198);
+}
+
+#check{
+		
 }
