@@ -7,28 +7,22 @@ public class Album {
 	private String albumContent;	// 사진첩 내용
 	private String albumByte;		// 사진첩 크기
 	private String albumDate;		// 사진첩 저장 일자
-	private String albumOriginName;	// 사진첩 원본 이름
-	private String albumStoreName;	// 사진첩 저장 이름
 	
 	public Album() {}
 
 	@Override
 	public String toString() {
 		return "Album [albumNo=" + albumNo + ", albumTitle=" + albumTitle + ", albumContent=" + albumContent
-				+ ", albumByte=" + albumByte + ", albumDate=" + albumDate + ", albumOriginName=" + albumOriginName
-				+ ", albumStoreName=" + albumStoreName + "]";
+				+ ", albumByte=" + albumByte + ", albumDate=" + albumDate + "]";
 	}
-
-	public Album(int albumNo, String albumTitle, String albumContent, String albumByte, String albumDate,
-			String albumOriginName, String albumStoreName) {
+	
+	public Album(int albumNo, String albumTitle, String albumContent, String albumByte, String albumDate) {
 		super();
 		this.albumNo = albumNo;
 		this.albumTitle = albumTitle;
 		this.albumContent = albumContent;
 		this.albumByte = albumByte;
 		this.albumDate = albumDate;
-		this.albumOriginName = albumOriginName;
-		this.albumStoreName = albumStoreName;
 	}
 
 	public int getAlbumNo() {
@@ -69,21 +63,5 @@ public class Album {
 
 	public void setAlbumDate(String albumDate) {
 		this.albumDate = albumDate;
-	}
-
-	public String getAlbumOriginName() {
-		return albumOriginName;
-	}
-
-	public void setAlbumOriginName(String albumOriginName) {
-		this.albumOriginName = albumOriginName;
-	}
-
-	public String getAlbumStoreName() {
-		return albumStoreName;
-	}
-
-	public void setAlbumStoreName(String albumStoreName) {
-		this.albumStoreName = albumStoreName;
 	}
 }

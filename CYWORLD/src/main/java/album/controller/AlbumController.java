@@ -12,8 +12,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import album.dto.Album;
 import album.dto.AlbumFile;
@@ -54,9 +56,32 @@ public class AlbumController {
 	}
 	
 	// 사진첩 조회
+//	@RequestMapping("/albumDetail")
+//	public String albumDetail(Album detailAlbum, Model model) {
+//		logger.info("AlbumController Detail 확인");
+//		
+//		if(detailAlbum.getAlbumNo() < 0) {
+//			return "redirect:/album/albumList";
+//		}
+//		
+//		detailAlbum = albumService.albumDetail(detailAlbum);
+//		
+//		model.addAttribute("detailAlbum", detailAlbum);
+//		
+//		return "album/albumDetail";
+//	}
+	
+	// 사진첩 조회
 	@RequestMapping("/albumDetail")
-	public void albumDetail() {
+	public ModelAndView albumDetail(Album detailAlbum,  Model model) {
 		logger.info("AlbumController Detail 확인");
+		
+		ModelAndView mav = new ModelAndView();
+		
+		mav.setViewName("/album/albumDetail");
+		mav.addObject("detailAlbum", albumService.albumDetail(detailAlbum));
+		
+		return mav;
 	}
 	
 	// 사진첩 작성 GET
@@ -79,10 +104,30 @@ public class AlbumController {
 		return "redirect:/album/albumList";
 	}
 	
+	@GetMapping("/albumUpdate")
+	public void albumUpdateGet() {
+		logger.info("AlbumController Update GET 확인");
+	}
+	
 	// 사진첩 수정
-	@RequestMapping("/albumUpdate")
-	public void albumUpdate() {
+	@PostMapping("/albumUpdate")
+	@ResponseBody
+	public Map<String, Object> albumUpdate(Album album) {
 		logger.info("AlbumController Update 확인");
+		Map<String, Object> map = new HashMap<>();
+		
+		try {
+			albumService.albumUpdate(album);
+			
+			map.put("map", album);
+			map.put("m", true);
+		} catch(Exception e) {
+			map.put("message", "오류 : " + e.getCause());
+			map.put("m", false);
+			
+			return map;
+		}
+		return map;
 	}
 	
 	// 사진첩 삭제
@@ -93,7 +138,12 @@ public class AlbumController {
 	
 	// 사진첩 선택 삭제
 	@RequestMapping("/albumCheckDelete")
-	public void albumCheckDelete() {
+	@ResponseBody
+	public List<Integer> albumCheckDelete(@RequestParam(value="checkAlbum") List<Integer> checkAlbum) {
 		logger.info("AlbumController CheckDelete 확인");
+		
+		albumService.albumCheckDelete(checkAlbum);
+		
+		return checkAlbum;
 	}
 }

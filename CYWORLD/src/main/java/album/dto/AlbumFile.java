@@ -5,7 +5,7 @@ public class AlbumFile {
     private int AlbumFileNo;		// 사진첩 파일 번호
     private int AlbumNo;			// 사진첩 번호
 	private String AlbumOriginName;	// 사진첩 원본 이름
-	private String AlbumStoredName;	//사진첩 저장 이름
+	private String AlbumStoredName;	// 사진첩 저장 이름
 	
 	public AlbumFile() {}
 	

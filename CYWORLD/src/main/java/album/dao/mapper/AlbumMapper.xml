@@ -12,10 +12,18 @@
 		FROM album
 		ORDER BY album_no DESC
 	</select>
-	
-	<select id="albumFile" resultType="album.dto.Album" parameterType="album.dto.Album">
-		SELECT album_no, album_origin_name, album_store_name
+
+	<!-- - - - - - - - - - - 사진첩 상세 조회 - - - - - - - - - - -->
+	<select id="albumDetail" resultType="album.dto.Album" parameterType="album.dto.Album">
+		SELECT album_no, album_title, album_content, to_char(album_date, 'yyyy-MM-dd day hh24:mi:ss') AS album_date
 		FROM album
+		WHERE album_no = #{ albumNo }
+	</select>
+	
+	<!-- - - - - - - - - - - 사진첩 첨부파일 조회  - - - - - - - - - - -->
+	<select id="albumFile" resultType="album.dto.AlbumFile" parameterType="album.dto.AlbumFile">
+		SELECT album_no, album_origin_name, album_stored_name
+		FROM album_file
 		WHERE album_no = #{ albumNo }
 	</select>
 	
@@ -30,6 +38,7 @@
 		VALUES ( #{ albumNo }, #{ albumTitle }, #{ albumContent }, sysdate )
 	</insert>
 	
+	<!-- - - - - - - - - - - 사진첩 첨부파일 작성 - - - - - - - - - - -->
 	<insert id="albumFileWrite" parameterType="album.dto.AlbumFile">
 		INSERT INTO album_file ( album_file_no, album_no, album_origin_name, album_stored_name )
 		VALUES ( album_file_seq.nextval, #{ albumNo }, #{ albumOriginName }, #{ albumStoredName } )
@@ -37,8 +46,23 @@
 	
 	<!-- - - - - - - - - - - UPDATE - - - - - - - - - - -->
 	
+	<!-- - - - - - - - - - - 사진첩 수정 - - - - - - - - - - -->
+	<update id="albumUpdate" parameterType="album.dto.Album">
+		UPDATE album
+		SET album_title = #{ albumTitle }
+		, album_content = #{ albumContent }
+		, album_date = sysdate
+		WHERE album_no = #{ albumNo }
+	</update>
 	
 	<!-- - - - - - - - - - - DELETE - - - - - - - - - - -->
 
-
+	<!-- - - - - - - - - - - 사진첩 선택 삭제 - - - - - - - - - - -->
+	<delete id="albumCheckDelete" parameterType="list">
+		DELETE FROM album
+		WHERE album_no IN
+			<foreach collection="list" item="albumNo" open="(" close=")" separator=",">
+				#{ albumNo }
+			</foreach>	
+	</delete>
 </mapper>

@@ -30,16 +30,28 @@ public class AlbumServiceImpl implements AlbumService {
 	// Context 객체
 	@Autowired private ServletContext context;
 
+	// context 보다 서버 주소값을 저장하기
+	
+	// 사진첩 조회
 	@Override
 	public List<Album> albumList() {
-		logger.info("AlbumService albumList 확인");
+		logger.info("AlbumServiceImpl albumList 확인");
 		
 		return albumDao.albumList();
 	}
+	
+	// 사진첩 상세 조회
+	@Override
+	public Album albumDetail(Album detailAlbum) {
+		logger.info("AlbumServiceImpl albumDetail 확인");
+		
+		return albumDao.albumDetail(detailAlbum);
+	}
 
+	// 사진첩 작성
 	@Override
 	public void albumWrite(Album album, MultipartFile file) {
-		logger.info("AlbumService albumWrite 확인");
+		logger.info("AlbumServiceImpl albumWrite 확인");
 		
 		albumDao.albumWrite(album);
 		
@@ -81,5 +93,21 @@ public class AlbumServiceImpl implements AlbumService {
 		albumFile.setAlbumStoredName(albumStoredName);
 
 		albumDao.albumFileWrite(albumFile);
+	}
+
+	// 사진첩 수정
+	@Override
+	public void albumUpdate(Album album) {
+		logger.info("AlbumServiceImpl albumUpdate 확인");
+		
+		albumDao.albumUpdate(album);
+	}
+	
+	// 사진첩 선택 삭제
+	@Override
+	public void albumCheckDelete(List<Integer> checkAlbum) {
+		logger.info("AlbumServiceImpl albumCheckDelete 확인");
+		
+		albumDao.albumCheckDelete(checkAlbum);
 	}
 }
