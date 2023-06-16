@@ -7,6 +7,7 @@ body {
     top: 0;
     right: 0;
     bottom: 0;
+    font-family: 'NanumBarunGothic';
 }
   
 .homepcover {
@@ -87,27 +88,6 @@ body {
 	font-size:15px;
 }
 
-.menu{
-	flex:0.1;
-	background-color: rgb(233, 233, 233);
-	margin-top:80px;
-	margin-bottom:20px;
-	margin-right:20px;
-}
-
-.homeBtn, .diaryBtn, .photoBtn, .guestBtn{
-	width:100px;
-	margin-bottom:10px;
-	height:32px;
-	border-style: none;
-	background-color: #3984a5;
-	color:white;
-}
-
-.homeBtn:hover, .diaryBtn:hover, .photoBtn:hover, .guestBtn:hover{
-	background-color: #647dbc;
-}
-
 .profileP{
 	flex:0.4;
 	margin-top:40px;
@@ -127,4 +107,29 @@ body {
 	display:flex;
 	flex-direction: column;
 	padding:20px;
+}
+
+.menu-button button{
+	width: 80px;
+	text-align: left;
+	margin-bottom: 0.9rem;
+	font-size: 1rem;
+	padding: 0.4rem;
+	background-color: #3B87AB;
+	color: white;
+	border-radius: 0 5px 5px 0;
+	border: 1px solid grey;
+}
+
+.menu-button:first-child{
+	margin-top: 3rem;
+}
+
+a button:hover {
+	background-color: #6B66FF;
+	color: white;
+}
+
+.menu-container {
+	flex: 0.15;
 }

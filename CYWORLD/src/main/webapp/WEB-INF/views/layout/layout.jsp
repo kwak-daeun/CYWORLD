@@ -5,7 +5,8 @@
 <head>
 	<meta charset="UTF-8">
 	<title>CYWORLD</title>
-	<link rel="stylesheet" type="text/css" href="./resources/css/cyMain/style.css" />
+	<link rel="stylesheet" type="text/css" href="../resources/css/layout/style.css" />
+	<link rel="stylesheet" type="text/css" href="../resources/css/layout/font.css" />
 </head>
 <body>
 <div class="homepcover">
@@ -34,20 +35,14 @@
             </div>
             
             <!-- 오른쪽 메뉴부분(추후 파일 따로 뺄수있음) -->
-            <div class="menu">
-				<button class="homeBtn" type="button">홈
-					<a class="homeBtn" href="#"></a>
-				</button>
-				<button class="diaryBtn" type="button">다이어리
-					<a class="diaryBtn" href="#"></a>
-				</button>
-				<button class="photoBtn" type="button">사진첩
-					<a class="photoBtn" href="#"></a>
-				</button>
-				<button class="guestBtn" type="button">방명록
-					<a class="guestBtn" href="#"></a>
-				</button>
-            </div>
+			<div class="menu-container">
+				<div class="menu-button">
+					<a href="#"><button>홈</button></a>
+					<a href="#"><button>다이어리</button></a>
+					<a href="#"><button>사진첩</button></a>
+					<a href="#"><button>방명록</button></a>
+				</div>
+			</div>
             
 		</div>
 	</div>
