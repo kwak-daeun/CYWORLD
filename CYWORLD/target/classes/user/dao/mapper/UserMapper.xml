@@ -6,6 +6,7 @@
 
 <!-- resulttype parmetertype 구분 -->
 
+<!-- 회원가입 -->
  <insert id="insert" parameterType="user.dto.User">
 		INSERT INTO MEMBER(MEMBER_NO, MEMBER_NAME, MEMBER_ID, MEMBER_PW)
 		VALUES(member_seq.nextval, #{memberName}, #{memberId}, #{memberPw})
@@ -15,5 +16,16 @@
  	select count (*) from MEMBER
  	WHERE MEMBER_ID = #{memberId}
 </select> 
+
+<!-- 로그인 -->
+<select id="selectCount" resultType="int" parameterType="user.dto.User">
+	select count (*) from MEMBER
+	WHERE MEMBER_ID = #{memberId} and MEMBER_PW = #{memberPw}
+</select>
+
+<select id="seletLoginInfo" resultType="user.dto.User" parameterType="user.dto.User" >
+	select * from MEMBER
+	WHERE MEMBER_ID = #{memberId}
+</select>
 
 </mapper>

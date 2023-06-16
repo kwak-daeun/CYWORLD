@@ -1,0 +1,21 @@
+@charset "UTF-8";
+* {
+	box-sizing: border-box;
+}
+ 
+body {
+	margin: 0;
+	background-color: white;	
+}
+ 
+.fa-snowflake {
+	animation: fall 5s linear forwards;
+	color: #fff;
+	position: absolute;
+}
+ 
+@keyframes fall {
+	to {
+		transform: translateY(90vh);
+	}
+}

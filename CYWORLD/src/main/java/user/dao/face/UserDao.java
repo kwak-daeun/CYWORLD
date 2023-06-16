@@ -8,5 +8,10 @@ public interface UserDao {
 
 	public int selectIdCheck(User user);
 
+	public int selectCount(User user);
+	
+	public User seletLoginInfo(User user);
+
+
 
 }
