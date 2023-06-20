@@ -4,4 +4,39 @@
 
 <mapper namespace="book.dao.face.BookDao">
 
+
+	<select id="selectBookList" resultType="Book">
+		SELECT 
+			BOOK_NO, BOOK_DATE, BOOK_CONTENT, BOOK_SECRET, BOOK_ID
+		FROM 
+			BOOK
+		ORDER BY BOOK_DATE DESC
+	</select>
+	
+	<insert id="bookInsert" parameterType="Book">
+		INSERT INTO BOOK
+			(BOOK_NO, BOOK_DATE, BOOK_CONTENT, BOOK_SECRET, BOOK_ID)
+		VALUES
+			(BOOK_SEQ.NEXTVAL, SYSDATE, #{bookContent}, 'N', #{bookId})
+		
+	</insert>
+	<!-- secret은 나중에 수정 -->
+	
+	<update id="bookModify" parameterType="Book">
+		UPDATE 
+			BOOK
+		SET
+			BOOK_CONTENT = #{bookContent}
+		WHERE 
+			BOOK_NO = #{bookNo}
+	</update>
+	
+	
+	<delete id="bookDelete" parameterType="int">
+		DELETE
+		FROM 
+			BOOK
+		WHERE
+			BOOK_NO = #{bookNo}
+	</delete>
 </mapper>

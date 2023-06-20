@@ -2,28 +2,42 @@ package book.dto;
 
 import java.util.Date;
 
+
+
 public class Book {
 	
 	private int bookNo;		// 방명록 번호
 	private Date bookDate;		// 방명록 작성일자
 	private String bookContent;	// 방명록 내용
 	private String bookSecret;	// 방명록 비밀글
+	private String bookId;		// 방명록 작성자 
+	
 	
 	public Book() {}
 
 	@Override
 	public String toString() {
-		return "Book [bookNo=" + bookNo + ", bookDate=" + bookDate + ", bookContent=" + bookContent + ", bookSecret="
-				+ bookSecret + "]";
+		return "Book [bookN=" + bookNo + ", bookDate=" + bookDate + ", bookContent=" + bookContent + ", bookSecret="
+				+ bookSecret + ", bookId=" +bookId + "]";
 	}
 
-	public Book(int bookNo, Date bookDate, String bookContent, String bookSecret) {
+	public Book(int bookNo, Date bookDate, String bookContent, String bookSecret, String bookId) {
 		super();
 		this.bookNo = bookNo;
 		this.bookDate = bookDate;
 		this.bookContent = bookContent;
 		this.bookSecret = bookSecret;
+		this.bookId = bookId;
 	}
+	
+	public String getBookId() {
+		return bookId;
+	}
+
+	public void setBookId(String bookId) {
+		this.bookId = bookId;
+	}
+
 
 	public int getBookNo() {
 		return bookNo;
