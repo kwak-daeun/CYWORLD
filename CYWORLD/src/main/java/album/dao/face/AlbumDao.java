@@ -49,4 +49,12 @@ public interface AlbumDao {
 	 * @param checkAlbum
 	 */
 	public void albumCheckDelete(List<Integer> checkAlbum);
+
+	/**
+	 * 사진첩 첨부파일 조회
+	 * 
+	 * @param viewAlbum
+	 * @return
+	 */
+	public AlbumFile selectAlbumFileyAlbumNo(Album viewAlbum);
 }

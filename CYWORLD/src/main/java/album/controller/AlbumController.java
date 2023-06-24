@@ -49,10 +49,13 @@ public class AlbumController {
 		
 		model.addAttribute("albumList", albumList);
 		
-		//첨부파일 모델값 전달
+//		//첨부파일 모델값 전달
 //		AlbumFile albumFile = albumService.getAttachFile(viewAlbum);
-//		model.addAttribute("viewAlbumFile", viewAlbum);
+//		model.addAttribute("albumFile", albumFile);
+//
+//		logger.info("albumList : {}", albumFile);
 	}
+	
 	
 	// 사진첩 조회
 //	@RequestMapping("/albumDetail")

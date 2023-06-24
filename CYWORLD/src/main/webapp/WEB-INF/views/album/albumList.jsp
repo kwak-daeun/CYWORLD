@@ -5,6 +5,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+<!-- <link rel="stylesheet" href="/resources/css/cyMain/style.css" /> -->
+
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
@@ -204,12 +207,18 @@ textarea {
 				<span><input type="text" id="" name="" class="" style="width: 400px;"></span>
 				<span><input type="button" value="등록" style="float: right;"></span>
 		</div>
-		<div>
-		
-		</div>
 		<hr style="margin-top: 50px; margin-bottom: 50px;">
 	</c:forEach>
+	<c:forEach items="${ albumFile }" var="albumFile">
+		<div>
+			<label>첨부파일</label>
+			<div>
+				${ albumFile.albumOriginName }
+			</div>
+		</div>
+	</c:forEach>
 </div>
+
 
 <div class="btn">
 	<button type="button" id="btnWrite">작성</button>
