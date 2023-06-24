@@ -44,4 +44,12 @@ public interface AlbumService {
 	 * @param album
 	 */
 	public void albumUpdate(Album album);
+
+	/**
+	 * 사진첩 첨부파일 조회
+	 * 
+	 * @param viewAlbum
+	 * @return
+	 */
+	public AlbumFile getAttachFile(Album viewAlbum);
 }

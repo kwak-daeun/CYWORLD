@@ -110,4 +110,11 @@ public class AlbumServiceImpl implements AlbumService {
 		
 		albumDao.albumCheckDelete(checkAlbum);
 	}
+
+	@Override
+	public AlbumFile getAttachFile(Album viewAlbum) {
+		logger.info("AlbumServiceImpl albumGetAttachFile 확인");
+		
+		return albumDao.selectAlbumFileyAlbumNo(viewAlbum);
+	}
 }
