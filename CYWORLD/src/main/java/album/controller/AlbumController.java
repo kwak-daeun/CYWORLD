@@ -18,7 +18,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import album.dto.Album;
-import album.dto.AlbumFile;
 import album.service.face.AlbumService;
 
 @Controller
