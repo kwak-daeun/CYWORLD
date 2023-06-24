@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import album.dto.Album;
+import album.dto.AlbumFile;
 import album.service.face.AlbumService;
 
 @Controller
@@ -50,10 +51,10 @@ public class AlbumController {
 		model.addAttribute("albumList", albumList);
 		
 //		//첨부파일 모델값 전달
-//		AlbumFile albumFile = albumService.getAttachFile(viewAlbum);
-//		model.addAttribute("albumFile", albumFile);
-//
-//		logger.info("albumList : {}", albumFile);
+		AlbumFile albumFile = albumService.getAttachFile(viewAlbum);
+		model.addAttribute("albumFile", albumFile);
+
+		logger.info("albumList : {}", albumFile);
 	}
 	
 	
